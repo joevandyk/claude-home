@@ -1,21 +1,26 @@
 #!/usr/bin/env bash
-# Links ~/.claude's instructions, rules, skills and settings to this repo. Safe to run again.
+# Links Claude Code's and Codex's global instructions, skills and settings to this repo. Safe to run again.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")" && pwd)"
-mkdir -p "$HOME/.claude"
 
-for name in CLAUDE.md rules skills settings.json; do
-  src="$REPO/claude/$name"
-  dst="$HOME/.claude/$name"
+link() {  # link <file in this repo> <path under $HOME>
+  local src="$REPO/$1" dst="$HOME/$2"
+  mkdir -p "$(dirname "$dst")"
   if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
-    echo "already linked: ~/.claude/$name"
-    continue
+    echo "already linked: ~/$2"
+    return
   fi
   if [ -e "$dst" ] || [ -L "$dst" ]; then
     mv "$dst" "$dst.before-claude-home"
-    echo "moved aside: ~/.claude/$name.before-claude-home"
+    echo "moved aside: ~/$2.before-claude-home"
   fi
   ln -s "$src" "$dst"
-  echo "linked: ~/.claude/$name -> $src"
-done
+  echo "linked: ~/$2 -> $src"
+}
+
+link global/AGENTS.md      .claude/CLAUDE.md
+link global/AGENTS.md      .codex/AGENTS.md
+link skills                .claude/skills
+link skills                .agents/skills
+link claude/settings.json  .claude/settings.json

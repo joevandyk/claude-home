@@ -1,6 +1,6 @@
 ---
 name: new-project
-description: Use when the user wants to start a new project, folder of documents or repository. Creates a private GitHub repo from claude-home's project template, with its own CLAUDE.md and activity log.
+description: Use when the user wants to start a new project, folder of documents or repository. Creates a private GitHub repo from claude-home's project template, with its own AGENTS.md and activity log.
 ---
 
 # New project
@@ -13,8 +13,8 @@ description: Use when the user wants to start a new project, folder of documents
    cd ~/projects/<name> && git init -b main
    ```
 
-3. **Fill in `README.md` and `CLAUDE.md`** from what the user told you: the goal, who it's for, and
-   anything that's true only for this project. Keep each to a screen.
+3. **Fill in `README.md` and `AGENTS.md`** from what the user told you: the goal, who it's for, and
+   anything that's true only for this project. Keep each to a screen. Leave `CLAUDE.md` as `@AGENTS.md`.
 4. **Push it, private**:
 
    ```

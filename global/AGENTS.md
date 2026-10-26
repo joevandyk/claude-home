@@ -1,12 +1,12 @@
-# How I work with Claude
+# How I work with AI agents
 
-These instructions load in every session on every laptop. They live in `~/claude-home` (this file is
-`~/claude-home/claude/CLAUDE.md`); `~/.claude` links to it.
+These instructions load in every session, in every project, for Claude Code and Codex alike. They
+live in `~/claude-home/global/AGENTS.md`; `~/.claude/CLAUDE.md` and `~/.codex/AGENTS.md` both link to it.
 
 ## Start of a session
 
-- Run `git -C ~/claude-home pull --ff-only` before anything else, so rules and skills added on my
-  other laptop are here too. If it fails, tell me why in one line and carry on.
+- Run `git -C ~/claude-home pull --ff-only` before anything else, so instructions and skills added on
+  my other laptop are here too. If it fails, tell me why in one line and carry on.
 
 ## Git is the record
 
@@ -21,14 +21,17 @@ These instructions load in every session on every laptop. They live in `~/claude
 
 ## Memory goes in git
 
-- **Claude's private memory is off.** When I say "remember", or correct you in a way that should
-  stick, use the `remember` skill: write it into this repo as a rule and push.
-- Don't write to `~/.claude/projects/*/memory/` or `MEMORY.md`.
+- **Your tool's private memory stays off.** When I say "remember", or correct you in a way that should
+  stick, use the `remember` skill: write it into an `AGENTS.md` and push.
+- Don't write to Claude's `~/.claude/projects/*/memory/` or Codex's `~/.codex/memories/`.
 
-## Skills live in one place
+## Instructions and skills live in one place
 
-- Every skill is a folder in `~/claude-home/claude/skills/`. Look there before writing a new one;
-  extend an existing skill rather than making a second.
+- **Instructions go in `AGENTS.md`**, never only in `CLAUDE.md`: these here, and a project's own at its
+  root. A project's `CLAUDE.md` holds just `@AGENTS.md`, so Claude reads the same file.
+- **Skills are folders in `~/claude-home/skills/`**, which both Claude Code and Codex read. A skill for
+  one project goes in that project's `.agents/skills/`. Look before writing a new one; extend an
+  existing skill rather than making a second.
 - Build a skill the second time a job comes up, using the `new-skill` skill.
 
 ## Log every change
@@ -48,7 +51,10 @@ These instructions load in every session on every laptop. They live in `~/claude
 - Ask before anything that sends, pays, deletes, or publishes: emails, messages to other people,
   payments, deleting files or accounts, making something public.
 
-## Writing rules
+## Writing
 
-- Write each rule as the action to take, with one default, not a prohibition or a menu.
-- Say it once. Put a long how-to in a skill and link it from here.
+- Plain and short. Lead with the answer, then the reason.
+- Use everyday words; explain a technical term the first time, or skip it.
+- Link what you name: a file, task, page or document gets its link.
+- Write each instruction as the action to take, with one default, not a prohibition or a menu.
+  Say it once; put a long how-to in a skill.
